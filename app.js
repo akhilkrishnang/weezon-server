@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use('/users',user_routes);
 
 //Server config
-let port = 6335;
+let port = process.env.PORT || 6335;
 app.listen(port,()=>{
     console.info("Weezon server is running on port number:"+port);
 });
