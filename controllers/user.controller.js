@@ -1,3 +1,4 @@
+/*Controller for weezon server user management*/
 const User = require('../models/user.model');
 
 exports.createUser = function(req,res){
