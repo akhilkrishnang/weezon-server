@@ -15,6 +15,14 @@ exports.createUser = function(req,res){
     });
 };
 
+exports.getAllUsers = function(req,res){
+    User.find((err,users)=>{
+        if(err)
+            return next(err);
+        res.send(users);
+    }).sort({name:1});
+};
+
 exports.getUser = function(req,res){
     User.findOne({phoneNum:req.params.phoneNum},(err,user)=>{
         if(err)
