@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const user_routes = require('./routes/user.routes');
 const mongoose = require('mongoose');
+const cors = require('cors')
 
 //Mongo DB connetion
 let db_url = 'mongodb://admin:w33adminzon@ds161620.mlab.com:61620/weezon_cloud';
@@ -11,7 +12,9 @@ mongoose.Promise = global.Promise;
 const db = mongoose.connection;
 db.on('error', console.error.bind(console,'MongoDB connection error:'));
 
-const app = express();
+const app = express()
+//Used for avoiding - CORS errors refer: https://www.npmjs.com/package/cors
+app.use(cors())
 //Configure body-parser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
